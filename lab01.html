@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://todomvc.com/examples/javascript-es6/dist/app.css">
+    <title>Lecture 01</title>
+</head>
+<body>
+    <section class="todoapp">
+        <header class="header">
+            <h1>todos</h1>
+            <input class="new-todo" placeholder="What needs to be done?" autofocus>
+        </header>
+        <section class="main">
+            <input class="toggle-all" type="checkbox">
+            <label for="toggle-all">Mark all as complete</label>
+            <ul class="todo-list"></ul>
+            <footer class="footer">
+                <span class="todo-count"></span>
+                <div class="filters">
+                    <a href="#/" class="selected">All</a>
+                    <a href="#/active">Active</a>
+                    <a href="#/completed">Completed</a>
+                </div>
+                <button class="clear-completed">Clear completed</button>
+            </footer>
+        </section>
+    </section>
+
+    <footer class="info">
+        <p>Double-click to edit a todo</p>
+        <p>Created by <a href="https://twitter.com/oscargodson">Oscar Godson</a></p>
+        <p>Refactored by <a href="https://github.com/cburgmer">Christoph Burgmer</a></p>
+        <p>Part of <a href="https://todomvc.com">TodoMVC</a></p>
+    </footer>
+
+    <script>
+        //
+        // Predefined state
+        //
+
+        var state = {
+            todos: [
+                { text: 'Hi', completed: true },
+                { text: 'Hello', completed: false },
+                { text: 'Hi there!', completed: true },
+            ],
+            filter: 'all'
+        };
+
+        // Tasks
+        // 1. Create simple element and append it to the page
+        //      1. Target element with `document.querySelector`
+        //      2. Learn about `document.innerHTML` and `Element.textContent`
+        //      3. Create element with `document.createElement`
+        //      4. Append the element to another element `Element.appendChild`
+        // 2. Render to following template into the page
+        //      1. Choose API (innerHTML or createElement)
+        //      2. Target this element: <ul class="todo-list"></ul>
+        //      3. Render basic template into the element
+        //      4. Make sure to use `state.todos` and project the `text` and `completed`
+        //          state properties into rendered templates
+
+        /*
+            Template:
+
+            <li>
+                <div class="view">
+                    <input class="toggle" type="checkbox">
+                    <label>aaa</label>
+                    <button class="destroy"></button>
+                </div>
+            </li>
+        */
+
+        let todoListEl = document.querySelector(".todo-list")
+        createHtmlWithCreateElement(state.todos, todoListEl)
+        createHtmlWithStrings(state.todos, todoListEl)
+
+        function createHtmlWithCreateElement(todos, targetEl) {
+            targetEl.innerHTML = ""
+
+            // "let" vytvari promennou pouze s lokalnim scopem
+            // "var" promenna ma globalni scope
+            for (let i = 0; i < todos.length; i++) {
+                let todo = todos[i]
+
+                let inputEl = document.createElement("input")
+                inputEl.type= "checkbox"
+                inputEl.classList.add("toggle")
+
+                console.log(inputEl.isConnected)
+                // console.log(i)
+
+                let labelEl = document.createElement("label")
+                // U tohohle overit input od uzivatele aby tim inputem nemohl
+                // v tom nasem skriptu spustit vlastni mozna skodlivy kod
+                labelEl.innerHTML = todo.text 
+                targetEl.append(inputEl)
+
+                let buttonEl = document.createElement("button")
+                bottonEl.classList.add("destroy")
+
+                let liEl = document.createElement("li")
+                liEl.append(imputEl, labelEl, buttonEl)
+                //liEl.
+
+
+            }
+        }
+
+        function createHtmlWithStrings(todos, targetEl) {
+            targetEl.innerHTML = "arguments"
+
+            for (let i = 0; i < todos.length; i++) {
+                let todo = todos[i]
+
+                let html =
+                    '<li>' + 
+                        '<div class="view">' + 
+                            '<input class="toggle" type="checkbox">' +
+                            '<label>aaa</label>' +
+                            '<button class="destroy"></button>' +
+                        '</div>' +
+                    '</li>';
+
+            }
+        }
+
+
+        // rady hledat na mdn
+        
+        // foreach loop na prochazeni poli 
+
+    </script>
+
+</body>
+</html>
