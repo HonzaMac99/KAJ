@@ -1,0 +1,5 @@
+let arr = []
+arr.__proto__  # zjistim vsechny prototypy tohohle objektu
+
+# polyfilling -> Array.---.hello = "hello"
+# muzu pro zastarale objekty nastavit jejich parametry/metody a pak je muzu volat ve vsech instancich
